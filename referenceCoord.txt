@@ -1,0 +1,6 @@
+Hall x:-3,y:1
+Room2 x:-6,y:3.4
+Empty2 x:-6.3,y:-0.6
+Kitchen x:3.64,y:0.9
+Room1 x:6.1,y:-1.4
+Empty1 x:1.45,y:4.14

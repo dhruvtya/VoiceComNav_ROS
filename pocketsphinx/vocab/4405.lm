@@ -1,0 +1,62 @@
+Language model created by QuickLM on Mon Nov  2 05:38:40 EST 2020
+Copyright (c) 1996-2010 Carnegie Mellon University and Alexander I. Rudnicky
+
+The model is in standard ARPA format, designed by Doug Paul while he was at MITRE.
+
+The code that was used to produce this language model is available in Open Source.
+Please visit http://www.speech.cs.cmu.edu/tools/ for more information
+
+The (fixed) discount mass is 0.5. The backoffs are computed using the ratio method.
+This model based on a corpus of 6 sentences and 10 words
+
+\data\
+ngram 1=10
+ngram 2=14
+ngram 3=15
+
+\1-grams:
+-1.0544 </s> -0.3010
+-1.0544 <s> -0.2609
+-1.5315 EMPTY -0.2747
+-1.0544 GO -0.2609
+-1.8325 HALL -0.2609
+-1.8325 KITCHEN -0.2609
+-1.5315 ONE -0.2609
+-1.5315 ROOM -0.2747
+-1.0544 TO -0.2609
+-1.5315 TWO -0.2609
+
+\2-grams:
+-0.3010 <s> GO 0.0000
+-0.6021 EMPTY ONE 0.0000
+-0.6021 EMPTY TWO 0.0000
+-0.3010 GO TO 0.0000
+-0.3010 HALL </s> -0.3010
+-0.3010 KITCHEN </s> -0.3010
+-0.3010 ONE </s> -0.3010
+-0.6021 ROOM ONE 0.0000
+-0.6021 ROOM TWO 0.0000
+-0.7782 TO EMPTY 0.0000
+-1.0792 TO HALL 0.0000
+-1.0792 TO KITCHEN 0.0000
+-0.7782 TO ROOM 0.0000
+-0.3010 TWO </s> -0.3010
+
+\3-grams:
+-0.3010 <s> GO TO
+-0.3010 EMPTY ONE </s>
+-0.3010 EMPTY TWO </s>
+-0.7782 GO TO EMPTY
+-1.0792 GO TO HALL
+-1.0792 GO TO KITCHEN
+-0.7782 GO TO ROOM
+-0.3010 ROOM ONE </s>
+-0.3010 ROOM TWO </s>
+-0.6021 TO EMPTY ONE
+-0.6021 TO EMPTY TWO
+-0.3010 TO HALL </s>
+-0.3010 TO KITCHEN </s>
+-0.6021 TO ROOM ONE
+-0.6021 TO ROOM TWO
+
+\end\
