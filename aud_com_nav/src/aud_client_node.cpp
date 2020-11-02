@@ -1,21 +1,24 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include "aud_com_nav/GoalFromAudio.h"
+#include <string>
 
 ros::ServiceClient aud_client;
 
-void audio_callback(const std_msgs::String aud_msg){
-  ROS_INFO("Audio command heard : %s", aud_msg.data.c_str());
+void audio_callback(const std_msgs::String::ConstPtr& aud_msg){
+  ROS_INFO("Audio command heard : %s", aud_msg->data.c_str());
   aud_com_nav::GoalFromAudio aud_srv;
- 
-  if(aud_msg.data.c_str()=="kitchen")
-     aud_srv.request.audio_goal = 1;
-  else if(aud_msg.data.c_str()=="hall")
-     aud_srv.request.audio_goal = 2;
-  else if(aud_msg.data.c_str()=="room one")
-     aud_srv.request.audio_goal = 3;
-  else if(aud_msg.data.c_str()=="empty two")
-     aud_srv.request.audio_goal = 5;
+  const std::string aud_msg_str = aud_msg->data.c_str();
+//  ROS_INFO("Audio command heard : %s", aud_msg_str); 
+
+  if(aud_msg_str=="kitchen")
+     {aud_srv.request.audio_goal = 1;}
+  else if(aud_msg_str=="hall")
+     {aud_srv.request.audio_goal = 2;}
+  else if(aud_msg_str=="room")
+     {aud_srv.request.audio_goal = 3;}
+  else if(aud_msg_str=="empty")
+     {aud_srv.request.audio_goal = 6;}
   else
   {
      ROS_INFO("Going to default hall position");

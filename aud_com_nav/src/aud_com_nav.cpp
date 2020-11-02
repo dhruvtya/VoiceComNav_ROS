@@ -8,6 +8,7 @@ const float hall[2]={-3.0,1.0};       //2
 const float room1[2]={6.1,-1.4};      //3
 const float room2[2]={-6.0,3.4};      //4
 const float empty1[2]={1.45,4.14};    //5
+const float empty2[2]={-6.3,-0.6};    //6
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
@@ -55,9 +56,15 @@ bool audgoalhandle(aud_com_nav::GoalFromAudio::Request& req, aud_com_nav::GoalFr
     break;
 
     case 5:
-      ROS_INFO("Empty Area");
+      ROS_INFO("Empty Area 1");
       goalCoords[0] = empty1[0];
       goalCoords[1] = empty1[1];
+    break;
+
+    case 6:
+      ROS_INFO("Empty Area 2");
+      goalCoords[0] = empty2[0];
+      goalCoords[1] = empty2[1];
     break;
 
     default:
