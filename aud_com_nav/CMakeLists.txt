@@ -208,3 +208,7 @@ include_directories(
 add_executable(aud_com_nav src/aud_com_nav.cpp)
 target_link_libraries(aud_com_nav ${catkin_LIBRARIES})
 add_dependencies(aud_com_nav aud_com_nav_generate_messages_cpp)
+
+add_executable(aud_com_nav src/aud_client_node.cpp)
+target_link_libraries(aud_client_node ${catkin_LIBRARIES})
+add_dependencies(aud_client_node aud_com_nav_generate_messages_cpp)
