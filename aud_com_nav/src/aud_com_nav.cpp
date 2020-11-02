@@ -3,15 +3,20 @@
 #include <actionlib/client/simple_action_client.h>
 #include "aud_com_nav/GoalFromAudio.h"
 
+///// Each area assigned Int values for goals
+// Co-ordinates of specified points
 const float kitchen[2]={3.64,0.9};    //1
 const float hall[2]={-3.0,1.0};       //2
 const float room1[2]={6.1,-1.4};      //3
 const float room2[2]={-6.0,3.4};      //4
 const float empty1[2]={1.45,4.14};    //5
 const float empty2[2]={-6.3,-0.6};    //6
+/////
 
+// Client for Move Base
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
+// Callback function for goal service
 bool audgoalhandle(aud_com_nav::GoalFromAudio::Request& req, aud_com_nav::GoalFromAudio::Response& res){
 
   ROS_INFO("Goal request received :");
@@ -23,12 +28,12 @@ bool audgoalhandle(aud_com_nav::GoalFromAudio::Request& req, aud_com_nav::GoalFr
   }
 
   move_base_msgs::MoveBaseGoal goal;
-
   goal.target_pose.header.frame_id = "map";
   goal.target_pose.header.stamp = ros::Time::now();
 
   float goalCoords[2]={0.0,0.0};
   
+// Update move base goal based on the request from voice command
   switch(req.audio_goal){
   
     case 1:
@@ -77,6 +82,7 @@ bool audgoalhandle(aud_com_nav::GoalFromAudio::Request& req, aud_com_nav::GoalFr
   goal.target_pose.pose.position.y = goalCoords[1];
   goal.target_pose.pose.orientation.w = 1.0;
  
+// Send goal to move base
   ac.sendGoal(goal);
   ac.waitForResult();
 
@@ -88,20 +94,17 @@ bool audgoalhandle(aud_com_nav::GoalFromAudio::Request& req, aud_com_nav::GoalFr
     ROS_INFO("Failed to reach the goal");
 
   return true;
-
 }
 
 
 int main(int argc, char** argv){
   
   ros::init(argc, argv, "aud_com_nav");
-
   ros::NodeHandle n;
 
+// Service for voice command client
   ros::ServiceServer aud_goal_service = n.advertiseService("/aud_com_nav/goal_service", audgoalhandle);
 
   ros::spin();
-
   return 0;
-
 }
