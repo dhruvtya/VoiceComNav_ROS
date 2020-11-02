@@ -5,22 +5,22 @@
 ros::ServiceClient aud_client;
 
 void audio_callback(const std_msgs::String aud_msg){
-  ROS_INFO("Audio command heard : %s", aud_msg);
+  ROS_INFO("Audio command heard : %s", aud_msg.data.c_str());
   aud_com_nav::GoalFromAudio aud_srv;
  
-  if(aud_msg=="kitchen")
+  if(aud_msg.data.c_str()=="kitchen")
      aud_srv.request.audio_goal = 1;
-  else if(aud_msg=="hall")
+  else if(aud_msg.data.c_str()=="hall")
      aud_srv.request.audio_goal = 2;
-  else if(aud_msg=="room one")
+  else if(aud_msg.data.c_str()=="room one")
      aud_srv.request.audio_goal = 3;
-  else if(aud_msg=="empty two")
+  else if(aud_msg.data.c_str()=="empty two")
      aud_srv.request.audio_goal = 5;
-  else{
+  else
+  {
      ROS_INFO("Going to default hall position");
      aud_srv.request.audio_goal = 2;
   }
-
 
   if(!aud_client.call(aud_srv))
         ROS_ERROR("Failed to call service safe_move");
