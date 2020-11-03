@@ -1,0 +1,9 @@
+<launch>
+
+  <node name="aud_com_nav" type="aud_com_nav" pkg="aud_com_nav" output="screen">
+  </node>
+
+  <node name="aud_client_node" type="aud_client_node" pkg="aud_com_nav" output="screen">
+  </node>
+
+</launch>
