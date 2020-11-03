@@ -100,7 +100,7 @@ void cluster_callback(const sensor_msgs::LaserScan::ConstPtr& lsrscan_msg){
 The sweep is 360 degrees. This means that the point at the start
 of the sweep and the end of the sweep CAN be of the same cluster.
 
-The loop above will treat them aas different clusters.
+The loop above will treat them as different clusters.
 
 Below function checks if first and last points are within the threshold distance.
 If yes, they are treated as the same cluster and no. of points for both are added. 
