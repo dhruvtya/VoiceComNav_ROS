@@ -6,7 +6,7 @@ In this project, the turtlebot3 and pocketsphinx packages are used to achieve na
 The voice commands can be given through an audio stream with a mic or an audio (WAV) file.
 
 Example voice command : "kitchen"
-Output : The robot will navigate to a pre-defined position in the kitchen area and wait there fir the next command.
+Output : The robot will navigate to a pre-defined position in the kitchen area and wait there for the next command.
 
 ### Output Screenshot :
 ![Kitchen](https://github.com/dhruvtya/VoiceComNav_ROS/blob/main/kitchennav.JPG)
